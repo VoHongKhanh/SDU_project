@@ -30,6 +30,27 @@ class sdu {
   }
 
   /**
+   * Gets current connection
+   * @return mysqli_connection current connection
+   */
+  public function getConnection() {
+    return $this->con;
+  }
+
+  /**
+   * Select database by database name
+   * @exception  mysqli_sql_exception
+   */
+  public function selectDB($db) {
+    try {
+      $this->db = $db;
+      mysqli_select_db($this->con, $this->db);
+    } catch (mysqli_sql_exception $e) {
+      throw new Exception('sdu.setDB # '.$e->getMessage());
+    }
+  }
+
+  /**
    * Closes current connection
    * @exception  mysqli_sql_exception
    */
@@ -41,6 +62,11 @@ class sdu {
     }
   }
 
+  /**
+   * Gets list of database on server
+   * @return ArrayList<string> list of database
+   * @exception  mysqli_sql_exception
+   */
   public function getDBList() {
     try {
       $this->dbList = [];
@@ -54,21 +80,17 @@ class sdu {
     }
   }
 
-  public function setDB($db) {
-    try {
-      $this->db = $db;
-      mysqli_select_db($this->con, $this->db);
-    } catch (mysqli_sql_exception $e) {
-      throw new Exception('sdu.setDB # '.$e->getMessage());
-    }
-  }
-
+  /**
+   * Gets list of table of the selected database
+   * @return ArrayList<string> list of table
+   * @exception  mysqli_sql_exception
+   */
   public function getTBList() {
     try {
       $this->tbList = [];
       $result = mysqli_query($this->con, "SHOW TABLES");
       while($row = mysqli_fetch_array($result)) {
-        $this->tbList[] = $row[0];
+        $this->tbList[] = new sduTableInfo($this, $this->db, $row[0]);
       }
       return $this->tbList;
     } catch (mysqli_sql_exception $e) {
@@ -76,6 +98,12 @@ class sdu {
     }
   }
 
+
+  /**
+   * Gets list of fields of the selected table
+   * @return ArrayList<string> list of fields
+   * @exception  mysqli_sql_exception
+   */
   public function getFDList($tbName) {
     try {
       if ($this->fdList == NULL) $this->fdList = [];
@@ -84,7 +112,7 @@ class sdu {
       $result = mysqli_query($this->con, "SELECT * FROM $tbName");
       while($fieldinfo = mysqli_fetch_field($result)) {
         $fdName = $fieldinfo->name;
-        $this->fdList[$tbName][$fdName] = $fieldinfo;
+        $this->fdList[$tbName][$fdName] = new sduFieldInfo($this, $this->db, $tbName, $fieldinfo);
       }
       return $this->fdList[$tbName];
     } catch (mysqli_sql_exception $e) {
