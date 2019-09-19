@@ -123,19 +123,45 @@
     $conInfo = new sduConnectionInfo($sdu);
     $dbList = $conInfo->getDatabaseList();
     echo "Number of database on server is {$conInfo->numberOfDatabase()}<br/>";
-    echo "<ol>";
-    foreach ($dbList as $dbname) {
-      echo "<li><a href='?db=$dbname'>$dbname</a></li>";
-    }
-    echo "</ol>";
+    // echo "<ol>";
+    // foreach ($dbList as $dbname) {
+    //   echo "<li><a href='?db=$dbname'>$dbname</a></li>";
+    // }
+    // echo "</ol>";
+    ?>
+          <table cellspacing="5" cellpadding="5" border="1" style="border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Charset</th>
+                <th>Collation</th>
+              </tr>
+            </thead>
+            <tbody>
+<?php       $no = 0;
+            foreach ($dbList as $db_) {
+?>
+              <tr>
+                <td><?=++$no?>.</td>
+                <td><a href='?db=<?=$db_->getName()?>'><?=$db_->getName()?></a></td>
+                <td><?=$db_->getCharset()?></td>
+                <td><?=$db_->getCollation()?></td>
+              </tr>
+<?php   } ?>
+        </tbody>
+      </table>
+<?php
+
     echo "Test get databases finish!<hr/>";
 
     echo "<div style='background-color: #aaa'>";
-    echo "   <b>Host</b>: {$conInfo->host()}<br/>";
-    echo "   <b>Client</b>: {$conInfo->client()}<br/>";
-    echo "   <b>Charset</b>: <pre>";
-    print_r($conInfo->charset());
-    echo "</pre></div></div>";
+    echo "   <h3>Connection's information</h3>";
+    echo "   <b>Host</b>: {$conInfo->getHost()}<br/>";
+    echo "   <b>Client</b>: {$conInfo->getClient()}<br/>";
+    echo "   <b>Charset</b>: {$conInfo->getCharset()}<br/>";
+    echo "   <b>Collation</b>: {$conInfo->getCollation()}<br/>";
+    echo "</div></div>";
   } catch (Exception $e) {
     echo "Connect fail!". $e->getMessage();
   } finally {

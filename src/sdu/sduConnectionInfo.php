@@ -1,12 +1,13 @@
 <?php
 class sduConnectionInfo {
-  private $host_ = "";
-  private $client_ = "";
-  private $charset_ = "";
+  private $host = "";
+  private $client = "";
+  private $charset = "";
 
   private $con = NULL;
   private $sdu = NULL;
   private $dbList = NULL;
+  private $info = NULL;
 
   /**
    * Creates new isntance of sduConnectionInfo
@@ -27,10 +28,10 @@ class sduConnectionInfo {
    * @return string host information
    * @exception  mysqli_sql_exception
    */
-  public function host() {
+  public function getHost() {
     try {
-      if ($this->host_ == "") $this->host_ = mysqli_get_host_info ($this->con);
-      return $this->host_;
+      if ($this->host == "") $this->host = mysqli_get_host_info ($this->con);
+      return $this->host;
     } catch (mysqli_sql_exception $e) {
       throw new Exception('sduConnectionInfo.host # '.$e->getMessage());
     }
@@ -41,10 +42,10 @@ class sduConnectionInfo {
    * @return string client information
    * @exception  mysqli_sql_exception
    */
-  public function client() {
+  public function getClient() {
     try {
-      if ($this->client_ == "") $this->client_ = mysqli_get_client_info ($this->con);
-      return $this->client_;
+      if ($this->client == "") $this->client = mysqli_get_client_info ($this->con);
+      return $this->client;
     } catch (mysqli_sql_exception $e) {
       throw new Exception('sduConnectionInfo.client # '.$e->getMessage());
     }
@@ -55,10 +56,19 @@ class sduConnectionInfo {
    * @return string charset of connection
    * @exception  mysqli_sql_exception
    */
-  public function charset() {
+  public function getCharset() {
     try {
-      if ($this->charset_ == "") $this->charset_ = mysqli_get_charset ($this->con);
-      return $this->charset_;
+      if ($this->info == "") $this->info = mysqli_get_charset ($this->con);
+      return $this->info->charset;
+    } catch (mysqli_sql_exception $e) {
+      throw new Exception('sduConnectionInfo.charset # '.$e->getMessage());
+    }
+  }
+
+  public function getCollation() {
+    try {
+      if ($this->info == "") $this->info = mysqli_get_charset ($this->con);
+      return $this->info->collation;
     } catch (mysqli_sql_exception $e) {
       throw new Exception('sduConnectionInfo.charset # '.$e->getMessage());
     }

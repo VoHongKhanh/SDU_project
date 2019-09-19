@@ -37,6 +37,18 @@ class sdu {
     return $this->con;
   }
 
+  public function getHost() {
+    return $this->host;
+  }
+
+  public function getUID() {
+    return $this->uid;
+  }
+
+  public function getPWD() {
+    return $this->pwd;
+  }
+
   /**
    * Select database by database name
    * @exception  mysqli_sql_exception
@@ -72,7 +84,7 @@ class sdu {
       $this->dbList = [];
       $result = mysqli_query($this->con, "SHOW DATABASES");
       while($row = mysqli_fetch_array($result)) {
-        $this->dbList[] = $row[0];
+        $this->dbList[] = new sduDatabaseInfo($this, $row[0]);
       }
       return $this->dbList;
     } catch (mysqli_sql_exception $e) {
