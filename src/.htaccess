@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteRule index.php /route.php [L]
+RewriteRule trial/sv /route.php [L]
+RewriteRule trial/db /route.php [L]
+RewriteRule trial/tb/* /route.php [L]
+RewriteRule trial/td /TableDetails.php [L]

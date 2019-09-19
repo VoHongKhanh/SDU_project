@@ -1,5 +1,5 @@
 <div class="col-12 col-lg-6 col-xl-5 offset-xl-1 align-top">
-  <form class="form-horizontal" method="post" action="?f=trial&s=db">
+  <form class="form-horizontal" method="post" action="/trial/db">
     <fieldset>
       
       <!-- Form Name -->
@@ -38,12 +38,12 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="btnConnect"></label>
         <div class="col-md-4">
-          <button type="submit" id="btnConnect" name="btnConnect" class="btn btn-primary">Connect</button>
+          <button class="btn btn-light btn-lg action-button" type="submit" id="btnConnect" name="btnConnect">Connect</button>
         </div>
       </div>
     </fieldset>
   </form>
 </div>
 <div class="col-md-5 col-lg-5 offset-lg-1 offset-xl-0 d-none d-lg-block phone-holder">
-  <div class="iphone-mockup"><img class="device" src="assets/img/crud.jpg"></div>
+  <div class="iphone-mockup"><img class="device" src="<?=getResourse('assets/img/crud.jpg')?>"></div>
 </div>

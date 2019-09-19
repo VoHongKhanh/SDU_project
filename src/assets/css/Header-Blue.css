@@ -1,9 +1,10 @@
 .header-blue {
   background: linear-gradient(135deg, #21d9d9, #081d44);
-  background-color: #184e8e;
+  background-color: #081d44;
   padding-bottom: 0px;
   font-family: 'Source Sans Pro', sans-serif;
-  min-height: 100vh;
+  min-height: 99vh;
+  width: 97vw;
 }
 
 @media (min-width:768px) {

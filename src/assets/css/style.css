@@ -1,0 +1,45 @@
+html, body {
+  min-width: 98vw;
+  max-width: 100vw;
+  height: 100vh;
+  background-color: #081d44;
+}
+.table {
+  color: #fff !important;
+}
+.table thead tr {
+  background-color: #077 !important;
+}
+.table_hover tbody tr:hover {
+  background-color: #ffa !important;
+  color: #033 !important;
+  cursor:  default;
+}
+.table_hover tbody tr:hover a {
+  color: #033 !important;
+}
+
+.subtable {
+  color: #033 !important;
+}
+.subtable thead tr {
+  background-color: #5dd !important;
+}
+.subtable tbody td {
+  background-color: #fff !important;
+}
+
+
+a {
+  color:  #fff !important;
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: none !important;
+}  
+#sdu_btnSignUp, #sdu_btnLogin {
+  display: none;
+}
+table td, table th {
+  vertical-align: middle !important;
+}
