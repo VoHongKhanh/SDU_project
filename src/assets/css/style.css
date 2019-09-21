@@ -36,10 +36,25 @@ a {
 }
 a:hover {
   text-decoration: none !important;
-}  
+}
 #sdu_btnSignUp, #sdu_btnLogin {
   display: none;
 }
 table td, table th {
   vertical-align: middle !important;
+}
+.table-list, .gen-form {
+  font-size: 0.8em !important;
+}
+.table .gen-subtitle-0 {
+  background-color: #022 !important;
+}
+.table .gen-subtitle-1 {
+  background-color: #055 !important;
+}
+.table .gen-subtitle-2 {
+  background-color: #088 !important;
+}
+.text-bold {
+  font-weight: bold !important;
 }

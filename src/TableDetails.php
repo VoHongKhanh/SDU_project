@@ -1,5 +1,5 @@
-<?php 
-require_once("sdu/autoload.php");
+<?php
+require_once("autoload.php");
 
 $host = isset($_SESSION['sdu_host'])? $_SESSION['sdu_host']: "";
 $uid  = isset($_SESSION['sdu_uid']) ? $_SESSION['sdu_uid'] : "";
@@ -39,9 +39,9 @@ if ($host == "" || $uid == "") {
       </tr>
     </thead>
     <tbody>
-<?php   
+<?php
     $no = 0;
-    foreach ($fdList as $fd) { 
+    foreach ($fdList as $fd) {
 ?>
       <tr style="cursor: default">
         <td><?=++$no?>.</td>
@@ -53,9 +53,9 @@ if ($host == "" || $uid == "") {
         <td><?=($fd->isUniqueField()? "X" : "")?></td>
         <td><?=($fd->isForeignKey()? ($fd->getRefTable()."@<br/>".$fd->getRefPK()) : "")?></td>
         <td class="text-center">
-          <button type="button" class="btn btn-sm btn-outline-light" 
-                  data-toggle="collapse" data-target="#sdu_tbl_<?=$no?>" 
-                  data-toggle="tooltip" 
+          <button type="button" class="btn btn-sm btn-outline-light"
+                  data-toggle="collapse" data-target="#sdu_tbl_<?=$no?>"
+                  data-toggle="tooltip"
                   title="Shows more information: isNull, Default value, Charset, Collation and Comment">
               <i class="fa fa-info-circle"></i>
           </button>
@@ -88,7 +88,7 @@ if ($host == "" || $uid == "") {
 <?php } ?>
     </tbody>
   </table>
-<?php 
+<?php
 	$sdu->close();
 }
 ?>

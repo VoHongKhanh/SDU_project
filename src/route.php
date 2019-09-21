@@ -1,12 +1,5 @@
 <?php
-require_once("sdu/autoload.php");
-
-$rootURL = "http://sdu:1000/"; 
-
-function getResourse($link) {
-    return $GLOBALS['rootURL'].$link;
-}
-
+require_once("autoload.php");
 
 $request = $_SERVER['REQUEST_URI'];
 $part = explode("/", $request);
