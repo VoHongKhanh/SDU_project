@@ -16,26 +16,26 @@ if ($host == "" || $uid == "") {
 var sdu_viewDivId = '#sduTableDetails';
 var sdu_numTables = <?=$dbInfo->numberOfTable()?>;
 function sdu_tb_info(tbName) {
-	$.post("/trial/td", {db:"<?=$db?>", tb:tbName})
-	 .done(function(data) {
-    	$(sdu_viewDivId).html(data);
-			$("#showHide_tableListPanel span").first().html("Show table list panel");
-			$("#showHide_tableListPanel i").first().addClass("fa-eye");
-			$("#showHide_tableListPanel i").first().removeClass("fa-eye-slash");
-			$("#tableListPanel").slideUp();
-			$("#sduTableDetails").fadeIn();
-  	});
+  $.post("TableDetails.php", {db:"<?=$db?>", tb:tbName})
+   .done(function(data) {
+      $(sdu_viewDivId).html(data);
+      $("#showHide_tableListPanel span").first().html("Show table list panel");
+      $("#showHide_tableListPanel i").first().addClass("fa-eye");
+      $("#showHide_tableListPanel i").first().removeClass("fa-eye-slash");
+      $("#tableListPanel").slideUp();
+      $("#sduTableDetails").fadeIn();
+    });
 }
 function sdu_tb_gen(tbName) {
-	$.post("/trial/gf", {db:"<?=$db?>", tb:tbName})
-	 .done(function(data) {
-    	$(sdu_viewDivId).html(data);
-			$("#showHide_tableListPanel span").first().html("Show table list panel");
-			$("#showHide_tableListPanel i").first().addClass("fa-eye");
-			$("#showHide_tableListPanel i").first().removeClass("fa-eye-slash");
-			$("#tableListPanel").slideUp();
-			$("#sduTableDetails").fadeIn();
- 	  });
+  $.post("GenerationForm.php", {db:"<?=$db?>", tb:tbName})
+   .done(function(data) {
+      $(sdu_viewDivId).html(data);
+      $("#showHide_tableListPanel span").first().html("Show table list panel");
+      $("#showHide_tableListPanel i").first().addClass("fa-eye");
+      $("#showHide_tableListPanel i").first().removeClass("fa-eye-slash");
+      $("#tableListPanel").slideUp();
+      $("#sduTableDetails").fadeIn();
+    });
 }
 function sdu_select_all_table() {
   v = $("#sdu_chkAll").prop('checked');
@@ -44,12 +44,13 @@ function sdu_select_all_table() {
   }
 }
 function btnShowTableListPanel_onClick() {
-	$("#showHide_tableListPanel span").first().html(($("#tableListPanel").is(':hidden')? "Hide": "Show") + " table list panel");
-	$("#showHide_tableListPanel i").first().toggleClass("fa-eye");
-	$("#showHide_tableListPanel i").first().toggleClass("fa-eye-slash");
-	$("#tableListPanel").slideToggle();
+  $("#showHide_tableListPanel span").first().html(($("#tableListPanel").is(':hidden')? "Hide": "Show") + " table list panel");
+  $("#showHide_tableListPanel i").first().toggleClass("fa-eye");
+  $("#showHide_tableListPanel i").first().toggleClass("fa-eye-slash");
+  $("#tableListPanel").slideToggle();
 }
 </script>
+
 	<div class="col-12 col-lg-12 col-xl-12 align-top" style="color: #fff">
 		<button type="button" class="btn btn-sm btn-outline-light"
 						id="showHide_tableListPanel"

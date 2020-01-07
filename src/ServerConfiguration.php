@@ -1,5 +1,5 @@
 <div class="col-12 col-lg-6 col-xl-5 offset-xl-1 align-top">
-  <form class="form-horizontal" method="post" action="/trial/db">
+  <form class="form-horizontal" method="post" action="?f=trial&s=db">
     <fieldset>
       
       <!-- Form Name -->

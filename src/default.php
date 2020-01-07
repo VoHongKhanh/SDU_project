@@ -7,7 +7,7 @@
     <li>Customer page with features: login, logout, register, create product list, product details and order<br>
     </li>
   </ol>
-  <button class="btn btn-light btn-lg action-button" type="button" onClick="window.location='trial/sv'">Free trial</button>
+  <button class="btn btn-light btn-lg action-button" type="button" onClick="window.location='?f=trial&s=sv'">Free trial</button>
 </div>
 <div class="col-md-5 col-lg-5 offset-lg-1 offset-xl-0 d-none d-lg-block phone-holder">
   <div class="iphone-mockup"><img class="device" src="<?=getResourse('assets/img/crud.jpg')?>"></div>

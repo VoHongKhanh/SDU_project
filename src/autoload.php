@@ -47,7 +47,7 @@ use PhpVnDataGenerator\VnBigNumber;
 use PhpVnDataGenerator\VnFullname;
 use PhpVnDataGenerator\VnPersonalInfo;
 
-$rootURL = "http://sdu:1000/";
+$rootURL = "http://sdu.com:1000/";
 
 function getResourse($link) {
     return $GLOBALS['rootURL'].$link;

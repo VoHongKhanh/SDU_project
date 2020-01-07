@@ -1,3 +1,11 @@
+<?php
+require_once("autoload.php");
+
+$func = isset($_GET["f"])? $_GET["f"]: "";
+$step = isset($_GET["s"])? $_GET["s"]: "";
+$db   = isset($_GET["d"])? $_GET["d"]: "";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +33,7 @@
 <!--             <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Free Trial</a></li>
             <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Purchase</a></li>
  -->            <li class="nav-item" role="presentation">
-            	<a class="nav-link active" href="#" data-toggle="modal" data-target="#frmAboutUs">About us</a>
+              <a class="nav-link active" href="#" data-toggle="modal" data-target="#frmAboutUs">About us</a>
             </li>
           </ul>
           <form class="form-inline mr-auto" target="_self">
@@ -35,26 +43,26 @@
           </form>
           <span class="navbar-text"> </span>
           <a class="btn btn-light action-button" role="button" href="#" id="sdu_btnSignUp">
-          	<i class="fa fa-user-plus"></i>&nbsp;Sign Up</a>
+            <i class="fa fa-user-plus"></i>&nbsp;Sign Up</a>
           <a class="btn btn-light action-button" role="button" href="#" id="sdu_btnLogin">
-          	<i class="fa fa-key"></i>&nbsp;Login</a>
+            <i class="fa fa-key"></i>&nbsp;Login</a>
         </div>
       </div>
     </nav>
     <div class="container hero">
       <div class="row">
 <?php
-		if ($func == "") {
-        	include("default.php");
-	    } else if ($func == "trial") {
-	        if ($step == "sv") {
-	          	include("ServerConfiguration.php");
-	        } else if ($step == "db") {
-          		include("DatabaseConfiguration.php");
-	        } else if ($step == "tb") {
-          		include("TableList.php");
-	        }
-	    }
+    if ($func == "") {
+          include("default.php");
+      } else if ($func == "trial") {
+          if ($step == "sv") {
+              include("ServerConfiguration.php");
+          } else if ($step == "db") {
+              include("DatabaseConfiguration.php");
+          } else if ($step == "tb") {
+              include("TableList.php");
+          }
+      }
 ?>
       </div>
     </div>

@@ -24,7 +24,7 @@ if ($host == "" || $uid == "") {
 	<div class="col-12 col-lg-7 col-xl-6 offset-xl-1 align-top" style="color: #fff">
 	  <h3>
       <button type="button" class="btn btn-sm btn-outline-light" 
-              onclick="location.href='/trial/sv'" 
+              onclick="location.href='?f=trial&s=sv'" 
               data-toggle="tooltip" title="Back to connection configuration">
           <i class="fa fa-backward"></i>
       </button>
@@ -43,7 +43,7 @@ if ($host == "" || $uid == "") {
 		$no = 0;
         foreach ($dbList as $db_) {
 ?>
-          	<tr onclick="location.href='/trial/tb/<?=$db_->getName()?>'" style="cursor: pointer">
+          	<tr onclick="location.href='?f=trial&s=tb&d=<?=$db_->getName()?>'" style="cursor: pointer">
 	            <td><?=++$no?>.</td>
 	            <td><?=$db_->getName()?></td>
 	            <td><?=$db_->getCharset()?></td>
